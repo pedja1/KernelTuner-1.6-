@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+     <item
+        android:id="@+id/cancel"
+        android:icon="@drawable/ic_menu_dontsave"
+        android:title="Cancel"/>
+    
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_menu_save"
+        android:title="Save"/>
+    
+           
+ 
+    
+</menu>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+			>
+
+		<ImageView
+			android:id="@+id/icon"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:src="@drawable/ic_menu_cc"
+			/>
+		
+		<TextView
+			android:id="@+id/profile_name"
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:text="Battery"
+			android:layout_weight="1"
+			android:textSize="20sp"
+			
+			 />
+		
+		<ImageView
+			android:id="@+id/check"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:src="@drawable/ic_menu_save"
+			 />
+    
+			
+    </LinearLayout>
+
+   
+
+

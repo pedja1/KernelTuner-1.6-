@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_menu_preferences"
+        
+        android:title="Settings"/>
+    
+            <item
+        android:id="@+id/changelog"
+        android:icon="@drawable/ic_menu_recent_history"
+     
+        android:title="Changelog"/>
+           
+    <item
+        android:id="@+id/check"
+        android:icon="@drawable/ic_menu_help"
+       
+        android:title="Compatibility Check"/>
+    
+    <item
+        android:id="@+id/log"
+        android:icon="@drawable/ic_menu_paste_holo_dark"
+       
+        android:title="Create Log File"/>
+		
+	<item
+        android:id="@+id/swap"
+        android:icon="@drawable/swap"
+        
+        android:title="Swap"/>
+	
+	<item
+        android:id="@+id/scanner"
+       
+        android:icon="@drawable/sd"
+        android:title="SD Card Scanner"/>
+    
+	
+</menu>
