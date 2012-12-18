@@ -9,7 +9,9 @@ import android.content.res.*;
 import android.graphics.*;
 import android.os.*;
 import android.preference.*;
+import android.text.InputType;
 import android.util.*;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,11 +19,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.*;
 import android.widget.*;
+
 import com.google.ads.*;
+
+import eu.chainfire.libsuperuser.Shell;
+
 import java.io.*;
 import java.util.*;
 
 import java.lang.Process;
+
+
+
 
 
 
@@ -474,6 +483,101 @@ public class KernelTuner extends Activity
 
 	}
 	
+private class CheckRoot extends AsyncTask<Void, Void, Void> {
+
+		
+		private boolean suAvailable = false;
+		private String suVersion = null;
+		private String suVersionInternal = null;
+		private List<String> suResult = null;
+		
+		
+
+		
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// Let's do some SU stuff
+			suAvailable = Shell.SU.available();
+			if (suAvailable) {
+				suVersion = Shell.SU.version(false);
+				suVersionInternal = Shell.SU.version(true);
+				suResult = Shell.SU.run(new String[] {
+					"id",
+					"ls -l /"
+				});
+			}
+			
+			// This is just so you see we had a progress dialog, 
+			// don't do this in production code
+			try { Thread.sleep(5000); } catch(Exception e) { }
+			
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			pd.dismiss();			
+			
+			// output
+			StringBuilder sb = (new StringBuilder()).
+				append("Root? ").append(suAvailable ? "Yes" : "No").append((char)10).
+				append("Version: ").append(suVersion == null ? "N/A" : suVersion).append((char)10).
+				append("Version (internal): ").append(suVersionInternal == null ? "N/A" : suVersionInternal).append((char)10).
+				append((char)10);
+			if (suResult != null) {
+				for (String line : suResult) {
+					sb.append(line).append((char)10);
+				}
+			}
+			AlertDialog.Builder builder = new AlertDialog.Builder(KernelTuner.this);
+
+			builder.setTitle("Root Check");
+
+			if(suAvailable){
+			builder.setMessage(sb.toString());
+			}
+			else{
+				builder.setMessage("Root not available.\nThis application will not work properly.");
+			}
+			//builder.setIcon(R.drawable.ic_menu_edit);
+
+
+			final CheckBox cb = new CheckBox(KernelTuner.this);
+			cb.setText("Check for root at startup");
+			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which)
+					{
+						if(cb.isChecked()){
+						editor.putBoolean("rootCheckAtStartup", false);
+						}
+						else{
+							editor.putBoolean("rootCheckAtStartup", true);
+						}
+					}
+				});
+			builder.setNegativeButton("Exit", new DialogInterface.OnClickListener(){
+
+					@Override
+					public void onClick(DialogInterface arg0, int arg1)
+					{
+						finish();
+
+					}
+
+				});
+			builder.setView(cb);
+
+			AlertDialog alert = builder.create();
+			alert.setCancelable(false);
+			alert.setCanceledOnTouchOutside(false);
+
+			alert.show();
+
+			//Toast.makeText(KernelTuner.this, sb.toString(), Toast.LENGTH_LONG).show();
+		}		
+	}
 	
 	boolean first;
 	@Override
@@ -484,7 +588,15 @@ public class KernelTuner extends Activity
 		editor = preferences.edit();
 		setContentView(R.layout.main);
 		
-	
+		if(preferences.getBoolean("rootCheckAtStartup", true)){
+		pd = new ProgressDialog(this);
+		pd.setMessage("Checking Root Access\nPlease wait...");
+		pd.setCancelable(false);
+		pd.setCanceledOnTouchOutside(false);
+		pd.setIndeterminate(true);
+		pd.show();
+		new CheckRoot().execute();
+		}
 		cpu0prog = (TextView)this.findViewById(R.id.ptextView3);
 		cpu1prog = (TextView)this.findViewById(R.id.ptextView4);
 		cpu2prog = (TextView)this.findViewById(R.id.ptextView7);
