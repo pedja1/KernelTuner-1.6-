@@ -7,7 +7,7 @@
 
 
 	<uses-sdk android:minSdkVersion="4"
-		android:targetSdkVersion="17" />
+		android:targetSdkVersion="8" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
@@ -16,11 +16,7 @@
 	<uses-permission android:name="android.permission.READ_LOGS" />
 	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
 
-	<supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:smallScreens="true" />
+	
 
 
 
@@ -29,7 +25,7 @@
 
         
 		android:allowBackup="true">
-		<activity android:name=".KernelTuner"
+		<activity android:name=".ui.KernelTuner"
 			android:icon="@drawable/ic_launcher"
 			android:label="@string/app_name" 
 			android:windowSoftInputMode="adjustResize" 
@@ -40,46 +36,48 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".Preferences"
+			android:name=".ui.Preferences"
 			android:label="@string/title_preferences"
 			android:icon="@drawable/misc"
 			android:exported="true"
 		>
 		</activity>
 
-		<receiver android:name="StartupReceiver" android:exported="false">
+		<receiver android:name=".receivers.StartupReceiver" android:exported="false">
 			<intent-filter>
 				<action
 					android:name="android.intent.action.BOOT_COMPLETED" />
 				<category android:name="android.intent.category.HOME" />
 			</intent-filter>
 		</receiver>
-		<service android:name=".StartupService" android:exported="false">
+		<service android:name=".services.StartupService" android:exported="false">
 			<intent-filter>
 				<action
 					android:name=".StartupService" />
 			</intent-filter>
 		</service>
 		
-		<activity android:name=".MiscTweaks" android:exported="true" android:label="@string/title_misc" android:icon="@drawable/misc" ></activity>
+		<activity android:name=".ui.MiscTweaks" android:exported="true" android:label="@string/title_misc" android:icon="@drawable/misc" ></activity>
 
-		<activity android:name=".About"  android:label="@string/title_about" android:icon="@drawable/about" android:theme="@style/Theme.Dialog.NoTitleBar"></activity>
-		<activity android:name=".Changelog"  android:label="@string/title_changelog" android:theme="@style/Theme.TransparentDark"  android:icon="@drawable/ic_menu_recent_history"></activity>
-		<activity android:name=".CompatibilityCheck" android:label="@string/title_check" android:theme="@style/Theme.TransparentNoTitle" android:icon="@drawable/ic_menu_help"></activity>
-		<activity android:name=".Profiles" android:exported="true" android:label="@string/title_profiles" android:icon="@drawable/ic_menu_cc"></activity>
-		<activity android:name=".ProfileEditor" android:label="@string/activity_title_profile_editor" android:icon="@drawable/ic_menu_edit"></activity><!-- android:theme="@android:style/Theme.Holo.Dialog -->
-		<activity android:name=".Swap" android:exported="true" android:label="@string/swap" android:icon="@drawable/swap" ></activity>
+		<activity android:name=".ui.About"  android:label="@string/title_about" android:icon="@drawable/about" android:theme="@style/Theme.Dialog.NoTitleBar"></activity>
+		<activity android:name=".ui.Changelog"  android:label="@string/title_changelog" android:theme="@style/Theme.TransparentDark"  android:icon="@drawable/ic_menu_recent_history"></activity>
+		<activity android:name=".ui.CompatibilityCheck" android:label="@string/title_check" android:theme="@style/Theme.TransparentNoTitle" android:icon="@drawable/ic_menu_help"></activity>
+		<activity android:name=".ui.Profiles" android:exported="true" android:label="@string/title_profiles" android:icon="@drawable/ic_menu_cc"></activity>
+		<activity android:name=".ui.ProfileEditor" android:label="@string/activity_title_profile_editor" android:icon="@drawable/ic_menu_edit"></activity><!-- android:theme="@android:style/Theme.Holo.Dialog -->
+		<activity android:name=".ui.Swap" android:exported="true" android:label="@string/swap" android:icon="@drawable/swap" ></activity>
 
-		<activity android:name=".SystemInfo" android:exported="true" android:label="@string/info" android:icon="@drawable/ic_menu_info_details" ></activity>
-		<activity android:name=".CPUActivity" android:label="@string/title_cpu" android:icon="@drawable/ic_launcher" android:screenOrientation="portrait" android:exported="true" ></activity>
-		<activity android:name=".VoltageActivity" android:exported="true" android:label="@string/title_voltage" android:icon="@drawable/voltage"  ></activity>
+		<activity android:name=".ui.SystemInfo" android:exported="true" android:label="@string/info" android:icon="@drawable/ic_menu_info_details" ></activity>
+		<activity android:name=".ui.CPUActivityOld" android:label="@string/title_cpu" android:icon="@drawable/ic_launcher" android:screenOrientation="portrait" android:exported="true" ></activity>
+		<activity android:name=".ui.VoltageActivity" android:exported="true" android:label="@string/title_voltage" android:icon="@drawable/voltage"  ></activity>
 		<activity android:name=".TISActivity" android:exported="true" android:label="@string/title_tis" android:icon="@drawable/times" ></activity>
-		<activity android:name=".GovernorActivity" android:label="@string/title_governor" android:icon="@drawable/dual" android:exported="true"></activity>
-		<activity android:name=".Reboot" android:label="Reboot" android:icon="@drawable/ic_launcher" android:exported="true"></activity>
-		<activity android:name=".OOM" android:label="OOM" android:icon="@drawable/swap" android:exported="true"></activity>
-		<activity android:name=".SDScannerActivity" android:label="SD Card Analyzer" android:icon="@drawable/sd" android:exported="true" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"></activity>
-		<activity android:name=".SDScannerConfigActivity" android:label="SD Card Analyzer" android:icon="@drawable/sd" android:exported="true" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait" ></activity>
-		<activity android:name=".TISActivityChart" android:exported="true" android:label="@string/title_tis" android:icon="@drawable/times" ></activity>
+		<activity android:name=".ui.GovernorActivity" android:label="@string/title_governor" android:icon="@drawable/dual" android:exported="true"></activity>
+		<activity android:name=".tools.Reboot" android:label="Reboot" android:icon="@drawable/ic_launcher" android:exported="true"></activity>
+		<activity android:name=".ui.OOM" android:label="OOM" android:icon="@drawable/swap" android:exported="true"></activity>
+		<activity android:name=".ui.SDScannerActivity" android:label="SD Card Analyzer" android:icon="@drawable/sd" android:exported="true" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"></activity>
+		<activity android:name=".ui.SDScannerActivityList" android:label="SD Card Analyzer" android:icon="@drawable/sd" android:exported="true" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait"></activity>
+		
+		<activity android:name=".ui.SDScannerConfigActivity" android:label="SD Card Analyzer" android:icon="@drawable/sd" android:exported="true" android:configChanges="keyboardHidden|orientation" android:screenOrientation="portrait" ></activity>
+		<activity android:name=".ui.TISActivityChart" android:exported="true" android:label="@string/title_tis" android:icon="@drawable/times" ></activity>
 		
 		
 		<!-- Intent received used to install shortcuts from other applications 
@@ -91,29 +89,19 @@
 				<action android:name="com.android.launcher.action.INSTALL_SHORTCUT"/>
 			</intent-filter>
 		</receiver>-->
-		
-		<activity android:name=".shortcuts.Shortcuts" android:label="Kernel Tuner - Shortcuts">
+		<activity
+            android:name=".ui.FMActivity"
+            android:icon="@drawable/folder" >
+        </activity>
+		<activity
+            android:name="rs.pedjaapps.KernelTuner.compatibility.ui.BackupRestore"
+            android:label="Backup/Restore" >
             <intent-filter>
-				<action android:name="android.intent.action.CREATE_SHORTCUT" />
-				<category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-		</activity>
+                <action android:name="rs.pedjaapps.KernelTuner.compatibility.ui.BackupRestore" />
 
-		<activity android:name=".shortcuts.CPUShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.GovernorShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.GPUShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.InfoShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.MiscShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.MpdecisionShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.ProfilesShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.RebootShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.SettingsShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.SwapShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.ThermaldShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.TISShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.VoltageShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		<activity android:name=".shortcuts.OOMShortcut" android:label="Kernel Tuner - Shortcuts"></activity>
-		
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 		<activity android:name="com.google.ads.AdActivity"
 			  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
 	</application>

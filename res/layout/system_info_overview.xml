@@ -17,8 +17,8 @@
             android:src="@drawable/battery_big" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical" >
 
@@ -79,8 +79,6 @@
                 android:id="@+id/fastcharge_head_image"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/fastcharge_head"
                 android:layout_marginBottom="8dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/divider_strong_holo" />
@@ -95,15 +93,17 @@
             android:layout_height="wrap_content"
             android:src="@drawable/memory" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+            
 
             
 
             <LinearLayout
+                android:id="@+id/LinearLayout1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
 
@@ -135,11 +135,13 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_below="@+id/LinearLayout1" />
 
             <LinearLayout
+                android:id="@+id/LinearLayout2"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBar2" >
 
                 <TextView
                     android:id="@+id/textView9"
@@ -169,11 +171,13 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_below="@+id/LinearLayout2" />
             
             <LinearLayout
+                android:id="@+id/LinearLayout3"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progressBar3" >
 
                 <TextView
                     android:id="@+id/textView12"
@@ -203,9 +207,9 @@
     style="?android:attr/progressBarStyleHorizontal"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="1" />
+                android:layout_below="@+id/LinearLayout3" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 

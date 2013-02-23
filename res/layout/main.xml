@@ -116,6 +116,35 @@
                     android:text="OOM" />
 
                 <Button
+                    android:id="@+id/sd"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/sd"
+                    android:gravity="center|center_vertical"
+                    android:text="SD Tweaks" />
+
+                <Button
+                    android:id="@+id/swap"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/swap"
+                    android:gravity="center|center_vertical"
+                    android:text="Swap" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout01"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                
+
+                <Button
                     android:id="@+id/button14"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="fill_parent"
@@ -126,6 +155,15 @@
                     android:text="@string/info" />
 
                 <Button
+                    android:id="@+id/changelog"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/changelog"
+                    android:gravity="center|center_vertical"
+                    android:text="Changelog" />
+                <Button
                     android:id="@+id/button15"
                     style="?android:attr/buttonStyleSmall"
                     android:layout_width="fill_parent"
@@ -135,6 +173,7 @@
                     android:gravity="center|center_vertical"
                     android:text="@string/title_about" />
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -217,64 +256,6 @@
             android:textColor="#ffffffff" />
 
         <TextView
-            android:id="@+id/ptextView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/ptextView2"
-            android:layout_marginTop="3dp"
-            android:text="@string/cpu2" />
-
-        <TextView
-            android:id="@+id/ptextView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/ptextView5"
-            android:layout_marginTop="3dp"
-            android:text="@string/cpu3" />
-
-        <ProgressBar
-            android:id="@+id/progressBar3"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/ptextView5"
-            android:layout_toRightOf="@+id/ptextView5"
-            android:max="100"
-            android:progress="0" />
-
-        <ProgressBar
-            android:id="@+id/progressBar4"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/ptextView6"
-            android:layout_toRightOf="@+id/ptextView6"
-            android:max="100"
-            android:progress="0" />
-
-        <TextView
-            android:id="@+id/ptextView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ptextView2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="3dp"
-            android:text="@string/offline"
-            android:textColor="#ffffffff" />
-
-        <TextView
-            android:id="@+id/ptextView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ptextView7"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="3dp"
-            android:text="@string/offline"
-            android:textColor="#ffffffff" />
-
-        <TextView
             android:id="@+id/cpuLoad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -312,20 +293,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/activity_main_cpu1_on_off" />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/activity_main_cpu2_on_off" />
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/activity_main_cpu3_on_off" />
     </LinearLayout>
 
     <LinearLayout

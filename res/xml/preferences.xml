@@ -52,5 +52,13 @@
         
          </PreferenceCategory>
 
+<PreferenceScreen
+		android:title="Backup And Restore"
+		android:summary=""
+		android:icon="@drawable/save">
+
+		<intent android:action="rs.pedjaapps.KernelTuner.compatibility.ui.BackupRestore"
+		/>
+</PreferenceScreen>
     
 </PreferenceScreen>

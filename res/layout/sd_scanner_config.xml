@@ -5,9 +5,42 @@
     tools:context=".KernelTuner"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
-		
-		
-	
+    <LinearLayout
+        android:id="@+id/mem_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@drawable/lcd_background_grey" >
+
+        <TextView
+            android:id="@+id/mem_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_weight="1"
+            android:text="Total: "
+            android:textColor="@color/orange" />
+
+        <TextView
+            android:id="@+id/mem_used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Used: "
+            
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/mem_free"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Free: "
+            
+            android:textColor="@color/green" />
+
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/ly3"
         android:layout_width="fill_parent"
@@ -32,14 +65,14 @@
         android:layout_centerVertical="true"
         android:src="@drawable/memory_card" />
 
-    <LinearLayout
-        android:id="@+id/chart"
-        android:layout_width="fill_parent"
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ll"
-        android:layout_alignParentTop="true" >
+        android:layout_below="@+id/mem_layout" >
 
-    </LinearLayout>
+    </ListView>
 
     <LinearLayout
         android:id="@+id/ll"
@@ -54,20 +87,19 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/path"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/folder_to_scann" />
+                android:text="path" />
 
-            <EditText
-                android:id="@+id/editText1"
+            <Button
+                android:id="@+id/browse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/sdcard/" >
+                android:text="Browse" />
 
-                <requestFocus />
-            </EditText>
+                
         </LinearLayout>
 
         <LinearLayout
@@ -115,6 +147,11 @@
             android:layout_height="wrap_content"
             android:text="Scann Folders" />
 
+        <CheckBox
+            android:id="@+id/display_in_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dispay Result in Chart" />
         <Button
             android:id="@+id/button2"
             android:layout_width="fill_parent"

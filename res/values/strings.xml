@@ -46,6 +46,8 @@
 <string name="mail"><a href="mailto:predragcokulov@gmail.com">Send me Mail</a></string>
     
     <color name="green">#00ff00</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#ffa500</color>
 
     <string name="copyright_cokulov_predrag_2012">Copyright © Čokulov Predrag 2012</string>
     <string name="about_faq_and_support">FAQ and Support:</string>
@@ -264,7 +266,7 @@
 	<string name="boot_time">Time since boot</string>
 	<string name="Browse">browse</string>
         <string name="browse">Browse</string>
-        <string name="scann_depth">Scann Depth(how many subfolders to scann)</string>
+        <string name="scann_depth">Scan Depth(how many subfolders to scann)</string>
         <string name="number_of_items">Number Of Items To Display</string>
         <string name="scann">Scan</string>
         <string name="folder_to_scann">Folder to scann(enter full path)</string>
