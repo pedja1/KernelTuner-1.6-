@@ -45,6 +45,7 @@ public class SDScannerConfigActivity extends Activity
 	private CheckBox sw;
 	private static final int GET_CODE = 0;
 	  String pt;
+	  ScanSDCard scanSdCard = new ScanSDCard();;
 
 	  TextView path;
 	  LinearLayout chart;
@@ -191,7 +192,7 @@ public class SDScannerConfigActivity extends Activity
 		summaryAdapter.add(new SDSummaryEntry(names[4], CALCULATING, 0, 0, icons[4]));
 		summaryAdapter.add(new SDSummaryEntry(names[5], CALCULATING, 0, 0, icons[5]));
 		
-		new ScanSDCard().execute();
+		scanSdCard.execute();
 	}
 
 	@Override
@@ -291,11 +292,16 @@ public class SDScannerConfigActivity extends Activity
 		long doc;
 		long arch;
 		
+		boolean running = true;
 		
-		
+		@Override
+		protected void onCancelled(){
+			running = false;
+		}
 		
 		@Override
 		protected Void doInBackground(String... args) {
+			while(running){
 			entries = new ArrayList<SDSummaryEntry>();
 			Iterator<File> apkIt = FileUtils.iterateFiles(Environment.getExternalStorageDirectory(), new String[] {"apk"}, true);
 			while(apkIt.hasNext()){
@@ -327,6 +333,7 @@ public class SDScannerConfigActivity extends Activity
 				arch+=archIt.next().length();
 	        }
 			publishProgress(5);
+			}
 			return null;
 		}
 		
@@ -392,6 +399,13 @@ public class SDScannerConfigActivity extends Activity
 	  public int compare(SDSummaryEntry ob1, SDSummaryEntry ob2){
 	   return ob2.getSize().compareTo(ob1.getSize()) ;
 	  }
+	}
+	
+	@Override
+	public void onDestroy(){
+		scanSdCard.cancel(true);
+		scanSdCard = null;
+		super.onDestroy();
 	}
 	
 	
