@@ -687,7 +687,7 @@ startCpuLoadThread();
 		set thread false so that cpu info thread stop repeating
 		*/
 		thread = false;
-		
+		java.lang.System.exit(0);
 
 		super.onDestroy();
 
